@@ -24,7 +24,7 @@ func namesFromText (s: String) -> (String, String) {
         .reduce(into: Set<String>()) { $0.insert($1.lowercased()) }
 
 
-//    let text = "FaCTOR OF TIME тел. +7(926) 494-2552 www.compft.ru ООО ФОРС ТРЕЙНИНГ Васильев Валерий Александрович Генеральны директор моб. +7(916) 688-4664 E-mail: valery.vasiliev@compft.ru"
+
     let words = s.components(separatedBy: .whitespacesAndNewlines)
     
     var resName = ""
