@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8419F44B29E071E40097C91F /* NumberFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419F44A29E071E40097C91F /* NumberFromText.swift */; };
 		843D59DA29B630DD006804F0 /* ContactEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D59D929B630DD006804F0 /* ContactEditorView.swift */; };
 		847708C929AA5767000FEAA1 /* VKR1_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847708C829AA5767000FEAA1 /* VKR1_3App.swift */; };
 		847708CB29AA5767000FEAA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847708CA29AA5767000FEAA1 /* ContentView.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8419F44A29E071E40097C91F /* NumberFromText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFromText.swift; sourceTree = "<group>"; };
 		843D59D929B630DD006804F0 /* ContactEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditorView.swift; sourceTree = "<group>"; };
 		843D59DD29B650CD006804F0 /* VKR1-3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "VKR1-3-Info.plist"; sourceTree = SOURCE_ROOT; };
 		847708C529AA5767000FEAA1 /* VKR1.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKR1.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				847708F629AA5813000FEAA1 /* ScanData.swift */,
 				843D59D929B630DD006804F0 /* ContactEditorView.swift */,
 				8493822929D1E7F5001C90DA /* NamesFromText.swift */,
+				8419F44A29E071E40097C91F /* NumberFromText.swift */,
 				847708CC29AA5769000FEAA1 /* Assets.xcassets */,
 				847708CE29AA5769000FEAA1 /* Preview Content */,
 			);
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843D59DA29B630DD006804F0 /* ContactEditorView.swift in Sources */,
+				8419F44B29E071E40097C91F /* NumberFromText.swift in Sources */,
 				847708F529AA57B0000FEAA1 /* TextRecognizer.swift in Sources */,
 				847708F329AA579C000FEAA1 /* ScannerView.swift in Sources */,
 				8493822A29D1E7F5001C90DA /* NamesFromText.swift in Sources */,

@@ -51,6 +51,8 @@ func namesFromText (s: String) -> (String, String) {
         
     }
     
+   
+    
     nameAndSurname = (resName, resSurName)
 
     return nameAndSurname

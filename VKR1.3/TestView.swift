@@ -1,8 +1,13 @@
+
+
 import SwiftUI
 import ContactsUI
 import Contacts
 
-struct ContactEditorView: View {
+struct TestView: View {
+    
+    @State private var showScannerSheet = true
+    @State private var texts:[ScanData] = []
     
     @State var firstName: String
     @State var lastName: String
@@ -10,6 +15,8 @@ struct ContactEditorView: View {
     @State var note: String
     @State var extraNumber: String?
     @State var showsAlert = false
+    
+
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -59,15 +66,18 @@ struct ContactEditorView: View {
                 }
                     .alert(isPresented: $showsAlert) {
                         Alert(
-                            title: Text("Контакт успешно сохранен"),
+                            title: Text("Контакт сохранен"),
                             dismissButton: .default(Text("OK")) {
                                                        presentationMode.wrappedValue.dismiss()
                                                    }
                         )
                     }
             )
-        }
+        }.sheet(isPresented: $showScannerSheet, content: {
+            self.makeScannerView()
+        })
     }
+        
     
     private func cancel() {
         // Отмена редактирования контакта
@@ -100,28 +110,24 @@ struct ContactEditorView: View {
             )]
         }
         
-        
-        
-        
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
         saveRequest.add(newContact, toContainerWithIdentifier: nil)
         try? store.execute(saveRequest)
         
         
-       
-        
-//        presentationMode.wrappedValue.dismiss()
-    
+    }
+    private func makeScannerView()-> ScannerView {
+        ScannerView(completion: {
+            textPerPage in
+            if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){
+                let newScanData = ScanData(content: outputText)
+                self.texts.append(newScanData)
+            }
+            self.showScannerSheet = false
+        })
     }
 
 }
 
 
-
-
-struct Previews_ContactEditorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContactEditorView()
-    }
-}

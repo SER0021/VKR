@@ -11,7 +11,7 @@ import Contacts
 import ContactsUI
 
 struct ContentView: View {
-    @State private var showScannerSheet = false
+    @State private var showScannerSheet = true
     @State private var texts:[ScanData] = []
     
     @State private var addContactTapped = false
@@ -27,59 +27,48 @@ struct ContentView: View {
                     
                     Text(text)
                     
-                    Button(action: {
-                        self.showContactEditor = true
-                    }) {
-                        Text("Add")
-                    }
-                    .sheet(isPresented: self.$showContactEditor) {
+                    Spacer()
+                    Group{
                         
-                        //var text = texts.first?.content ?? "Scan error"
-                        let nameAndSurnames = namesFromText(s: text)
-                        let name = nameAndSurnames.0
-                        let surname = nameAndSurnames.1
                         
-                        ContactEditorView(firstName: name, lastName: surname, phoneNumber: "111111")
-//                        ContactEditorView(firstName: "who", lastName: "aboba", phoneNumber: "111111")
-                    }
-                    
-                    
-                    
-//                    Text(texts.first?.content ?? "Scan error")
+                        Button(action: {
+                            self.showContactEditor = true
+                        }) {
+                            Text("Добавить в контакты")
+                        }
+                        
+                        .font(.largeTitle)
+                        .cornerRadius(10)
+                        .shadow(radius: 10)
+                        .sheet(isPresented: self.$showContactEditor) {
+                            
+                            let nameAndSurnames = namesFromText(s: text)
+                            let name = nameAndSurnames.0
+                            let surname = nameAndSurnames.1
+                            let numbers = numbersFromText(s: text)
+                            let number1 = numbers.0
+                            let number2 = numbers.1
+                            
+                            
+                            ContactEditorView(firstName: name, lastName: surname, phoneNumber: number1, note: text, extraNumber: number2)
+                        }
+                        
+                    }.frame(maxHeight: .infinity, alignment: .bottom)
                     
                     Spacer()
-   
+                    
                 }
                 else{
-                    //                                        NavigationLink(destination: ContactEditorView(firstName: "who", lastName: "aboba", phoneNumber: "111111")) {
-                    //                                            Text("Add")
-                    //                                        }
-                                    
-                    Button(action: {
-                        self.showContactEditor = true
-                    }) {
-                        Text("Add")
-                    }
-                    .sheet(isPresented: self.$showContactEditor) {
-                        
-                        var text = texts.first?.content ?? "Scan error"
-                        var nameAndSurnames = namesFromText(s: text)
-                        var name = nameAndSurnames.0
-                        var surname = nameAndSurnames.1
-                        
-                        ContactEditorView(firstName: name, lastName: surname, phoneNumber: "111111")
-//                        ContactEditorView(firstName: "who", lastName: "aboba", phoneNumber: "111111")
-                    }
-                    
-                    
-                    Text("No scan yet").font(.title)
+                    Text("Здесь будет ваш контакт").font(.title).opacity(0.5)
                 }
             }
-            .navigationTitle("Scan OCR")
+            
+            .navigationTitle("Результат")
             .navigationBarItems(trailing: Button(action: {
                 texts.removeAll()
                 self.showScannerSheet = true
             }, label: {
+                Text("Сканировать")
                 Image(systemName: "doc.text.viewfinder")
                     .font(.title)
             })
@@ -99,8 +88,6 @@ struct ContentView: View {
             self.showScannerSheet = false
         })
     }
-    
-    
     
 }
 

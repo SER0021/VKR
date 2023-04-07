@@ -12,6 +12,16 @@ struct VKR1_3App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            TestView()
+//            ScannerView(completion: {
+//                textPerPage in
+//                if let outputText = textPerPage?.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines){
+//                    let newScanData = ScanData(content: outputText)
+//                    self.texts.append(newScanData)
+//                }
+//
+//            })
+          
         }
     }
 }
