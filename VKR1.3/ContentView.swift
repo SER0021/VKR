@@ -22,10 +22,23 @@ struct ContentView: View {
         NavigationView{
             VStack{
                 if texts.count > 0{
+//                if texts.count > -1{
                     
                     let text = texts.first?.content ?? "Scan error"
+//                    let text = "Иван \n 89164266762"
+                    
+                    
+                    Spacer()
                     
                     Text(text)
+                        .font(.title2)
+//                        .fixedSize(horizontal: false, vertical: false)
+                        .multilineTextAlignment(.center)
+                        .padding()
+//                        .frame(width: 400, height: 300)
+                        .background(RoundedRectangle(cornerRadius: 8).fill(Color.teal))
+                        
+                        
                     
                     Spacer()
                     Group{
@@ -35,11 +48,13 @@ struct ContentView: View {
                             self.showContactEditor = true
                         }) {
                             Text("Добавить в контакты")
+                                .foregroundColor(.black)
+                                .frame(width: 350, height: 70)
+                                .multilineTextAlignment(.center)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(Color.teal).shadow(radius: 3))
                         }
                         
                         .font(.largeTitle)
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
                         .sheet(isPresented: self.$showContactEditor) {
                             
                             let nameAndSurnames = namesFromText(s: text)

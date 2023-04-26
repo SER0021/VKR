@@ -14,15 +14,15 @@ struct ContactEditorView: View {
     @Environment(\.presentationMode) var presentationMode
     
     init(firstName: String = "", lastName: String = "", phoneNumber: String = "", note: String = "", extraNumber: String? = "") {
-            self._firstName = State(initialValue: firstName)
-            self._lastName = State(initialValue: lastName)
-            self._phoneNumber = State(initialValue: phoneNumber)
-            self._note = State(initialValue: note)
-            self._extraNumber = State(initialValue: extraNumber)
-            
-        }
+        self._firstName = State(initialValue: firstName.firstUppercased)
+        self._lastName = State(initialValue: lastName.firstUppercased)
+        self._phoneNumber = State(initialValue: phoneNumber)
+        self._note = State(initialValue: note)
+        self._extraNumber = State(initialValue: extraNumber)
+        
+    }
     static let contactSavedNotification = Notification.Name("contactSaved")
-
+    
     var body: some View {
         NavigationView {
             Form {
@@ -47,10 +47,10 @@ struct ContactEditorView: View {
                     .keyboardType(.phonePad)
                 }
                 
-           
+                
                 
             }
-            .navigationBarTitle("Редактировать контакт")
+            .navigationBarTitle("Редактировать")
             .navigationBarItems(
                 leading: Button(action: cancel) { Text("Отмена") },
                 trailing: Button("Сохранить") {
@@ -61,8 +61,8 @@ struct ContactEditorView: View {
                         Alert(
                             title: Text("Контакт успешно сохранен"),
                             dismissButton: .default(Text("OK")) {
-                                                       presentationMode.wrappedValue.dismiss()
-                                                   }
+                                presentationMode.wrappedValue.dismiss()
+                            }
                         )
                     }
             )
@@ -109,14 +109,23 @@ struct ContactEditorView: View {
         try? store.execute(saveRequest)
         
         
-       
         
-//        presentationMode.wrappedValue.dismiss()
-    
+        
+        //        presentationMode.wrappedValue.dismiss()
+        
     }
-
+    
 }
 
+extension StringProtocol {
+    var firstUppercased: String {
+        guard let firstChar = self.first else {
+            return ""
+        }
+        return firstChar.uppercased() + self.dropFirst().lowercased()
+        
+    }
+}
 
 
 
