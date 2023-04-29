@@ -64,8 +64,10 @@ struct ContentView: View {
                             let number1 = numbers.0
                             let number2 = numbers.1
                             
-                            
-                            ContactEditorView(firstName: name, lastName: surname, phoneNumber: number1, note: text, extraNumber: number2)
+
+                            ContactEditorView(controller: ContactController(contact: Contact(firstName: name, lastName: surname, phoneNumber: number1, note: text, extraNumber: number2)))
+
+
                         }
                         
                     }.frame(maxHeight: .infinity, alignment: .bottom)

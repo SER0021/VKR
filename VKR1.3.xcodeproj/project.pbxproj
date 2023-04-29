@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8419F44B29E071E40097C91F /* NumberFromText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419F44A29E071E40097C91F /* NumberFromText.swift */; };
+		842A969329FD63C90070069F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A969229FD63C90070069F /* Contact.swift */; };
+		842A969529FD663C0070069F /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A969429FD663C0070069F /* ContactController.swift */; };
 		843D59DA29B630DD006804F0 /* ContactEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D59D929B630DD006804F0 /* ContactEditorView.swift */; };
 		847708C929AA5767000FEAA1 /* VKR1_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847708C829AA5767000FEAA1 /* VKR1_3App.swift */; };
 		847708CB29AA5767000FEAA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847708CA29AA5767000FEAA1 /* ContentView.swift */; };
@@ -59,8 +61,9 @@
 
 /* Begin PBXFileReference section */
 		8419F44A29E071E40097C91F /* NumberFromText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFromText.swift; sourceTree = "<group>"; };
+		842A969229FD63C90070069F /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		842A969429FD663C0070069F /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		843D59D929B630DD006804F0 /* ContactEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditorView.swift; sourceTree = "<group>"; };
-		843D59DD29B650CD006804F0 /* VKR1-3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "VKR1-3-Info.plist"; sourceTree = SOURCE_ROOT; };
 		847708C529AA5767000FEAA1 /* VKR1.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKR1.3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847708C829AA5767000FEAA1 /* VKR1_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKR1_3App.swift; sourceTree = "<group>"; };
 		847708CA29AA5767000FEAA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +107,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842A968F29FD5B100070069F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				847708F629AA5813000FEAA1 /* ScanData.swift */,
+				842A969229FD63C90070069F /* Contact.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		842A969029FD5B1C0070069F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				847708F229AA579C000FEAA1 /* ScannerView.swift */,
+				847708CA29AA5767000FEAA1 /* ContentView.swift */,
+				843D59D929B630DD006804F0 /* ContactEditorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		842A969129FD5B250070069F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				847708F429AA57B0000FEAA1 /* TextRecognizer.swift */,
+				8493822929D1E7F5001C90DA /* NamesFromText.swift */,
+				8419F44A29E071E40097C91F /* NumberFromText.swift */,
+				842A969429FD663C0070069F /* ContactController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		846EBF4529B77DD800A94817 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,17 +168,12 @@
 		847708C729AA5767000FEAA1 /* VKR1.3 */ = {
 			isa = PBXGroup;
 			children = (
+				842A969129FD5B250070069F /* Controller */,
+				842A969029FD5B1C0070069F /* View */,
+				842A968F29FD5B100070069F /* Model */,
 				8493822D29D1EAB7001C90DA /* malesur.txt */,
 				8493822B29D1EAA9001C90DA /* malenam.txt */,
-				843D59DD29B650CD006804F0 /* VKR1-3-Info.plist */,
 				847708C829AA5767000FEAA1 /* VKR1_3App.swift */,
-				847708CA29AA5767000FEAA1 /* ContentView.swift */,
-				847708F229AA579C000FEAA1 /* ScannerView.swift */,
-				847708F429AA57B0000FEAA1 /* TextRecognizer.swift */,
-				847708F629AA5813000FEAA1 /* ScanData.swift */,
-				843D59D929B630DD006804F0 /* ContactEditorView.swift */,
-				8493822929D1E7F5001C90DA /* NamesFromText.swift */,
-				8419F44A29E071E40097C91F /* NumberFromText.swift */,
 				847708CC29AA5769000FEAA1 /* Assets.xcassets */,
 				847708CE29AA5769000FEAA1 /* Preview Content */,
 			);
@@ -312,11 +340,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842A969329FD63C90070069F /* Contact.swift in Sources */,
 				843D59DA29B630DD006804F0 /* ContactEditorView.swift in Sources */,
 				8419F44B29E071E40097C91F /* NumberFromText.swift in Sources */,
 				847708F529AA57B0000FEAA1 /* TextRecognizer.swift in Sources */,
 				847708F329AA579C000FEAA1 /* ScannerView.swift in Sources */,
 				8493822A29D1E7F5001C90DA /* NamesFromText.swift in Sources */,
+				842A969529FD663C0070069F /* ContactController.swift in Sources */,
 				847708CB29AA5767000FEAA1 /* ContentView.swift in Sources */,
 				847708C929AA5767000FEAA1 /* VKR1_3App.swift in Sources */,
 				847708F729AA5813000FEAA1 /* ScanData.swift in Sources */,
