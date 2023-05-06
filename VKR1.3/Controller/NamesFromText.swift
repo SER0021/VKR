@@ -5,13 +5,31 @@ func namesFromText (s: String) -> (String, String) {
     
     var nameAndSurname : (String, String)
     
-    guard let surFileURL = Bundle.main.url(forResource: "malesur", withExtension: "txt")  else {
-        fatalError("No fileURL")
-    }
+    copyToDocuments()
+    copySurToDocuments()
+    
+//    guard let surFileURL = Bundle.main.url(forResource: "malesur", withExtension: "txt")  else {
+//        fatalError("No fileURL")
+//    }
 
-    guard let nameFileURL = Bundle.main.url(forResource: "malenam", withExtension: "txt")  else {
-        fatalError("No fileURL")
+//    guard let nameFileURL = Bundle.main.url(forResource: "malenam", withExtension: "txt")  else {
+//        fatalError("No fileURL")
+//    }
+    
+    //словарь для имен
+    let nameFileName = "malenam.txt"
+    guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        fatalError("Unable to access documents directory")
     }
+    let nameFileURL = documentsDirectoryURL.appendingPathComponent(nameFileName)
+    
+    //словарь для фамилий
+    let surFileName = "malesur.txt"
+    guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        fatalError("Unable to access documents directory")
+    }
+    let surFileURL = documentsDirectoryURL.appendingPathComponent(surFileName)
+   
 
     let surnameSet = try! String(contentsOf: surFileURL, encoding: .utf8)
         .components(separatedBy: .newlines)
@@ -36,6 +54,8 @@ func namesFromText (s: String) -> (String, String) {
         let lowercaseWord = word.lowercased()
         
         switch lowercaseWord {
+            
+    
         case let name where nameSet.contains(name):
             print("Found name: \(word)")
             resName = word
@@ -44,6 +64,8 @@ func namesFromText (s: String) -> (String, String) {
         case let surname where surnameSet.contains(surname):
             print("Found surname: \(word)")
             resSurName = word
+            
+        
             
         default:
             break
@@ -57,6 +79,37 @@ func namesFromText (s: String) -> (String, String) {
 
     return nameAndSurname
     
+}
+
+func copySurToDocuments () {
+    guard let sourceURL = Bundle.main.url(forResource: "malesur", withExtension: "txt"),
+          let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        fatalError("Unable to access file or documents directory")
+    }
+    
+    let destinationURL = documentsDirectoryURL.appendingPathComponent("malesur.txt")
+    
+    do {
+        try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
+    } catch {
+        print("Error copying file: \(error)")
+    }
+    
+}
+
+func copyToDocuments () {
+    guard let sourceURL = Bundle.main.url(forResource: "malenam", withExtension: "txt"),
+          let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        fatalError("Unable to access file or documents directory")
+    }
+
+    let destinationURL = documentsDirectoryURL.appendingPathComponent("malenam.txt")
+
+    do {
+        try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
+    } catch {
+        print("Error copying file: \(error)")
+    }
 }
 
 

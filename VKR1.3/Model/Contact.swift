@@ -19,6 +19,14 @@ struct Contact {
         let newContact = CNMutableContact()
         newContact.givenName = firstName
         newContact.familyName = lastName
+        
+        //добавляем недостающие имена и фамилии в словарь
+        addNameToFile(name: firstName)
+        addSurToFile(surname: lastName)
+        
+//        readNamesFromFile()
+//        readSurFromFile()
+        
         newContact.note = note
         
         if let extraNumber = extraNumber {
@@ -45,6 +53,144 @@ struct Contact {
         saveRequest.add(newContact, toContainerWithIdentifier: nil)
         try store.execute(saveRequest)
     }
+    
+    
+    func addNameToFile(name: String) {
+        let fileName = "malenam.txt"
+        
+        guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access documents directory")
+        }
+        
+        let fileURL = documentsDirectoryURL.appendingPathComponent(fileName)
+        
+        do {
+            // Read the contents of the file
+            var fileContent = try String(contentsOf: fileURL)
+            
+            
+            if !fileContent.contains(name) {
+                // Add the new name to the file content
+                fileContent.append("\n\(name)")
+            }
+            // Write the updated file content back to the file
+            try fileContent.write(to: fileURL, atomically: false, encoding: .utf8)
+        } catch {
+            print("Error writing to file: \(error)")
+        }
+    }
+    
+    func addSurToFile(surname: String) {
+        let fileName = "malesur.txt"
+        
+        guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access documents directory")
+        }
+        
+        let fileURL = documentsDirectoryURL.appendingPathComponent(fileName)
+        
+        do {
+            // Read the contents of the file
+            var fileContent = try String(contentsOf: fileURL)
+            
+            if !fileContent.contains(surname) {
+                // Add the new name to the file content
+                fileContent.append("\n\(surname)")
+            }
+            
+            
+            // Write the updated file content back to the file
+            try fileContent.write(to: fileURL, atomically: false, encoding: .utf8)
+        } catch {
+            print("Error writing to file: \(error)")
+        }
+    }
+    
+    func copyToDocuments () {
+        guard let sourceURL = Bundle.main.url(forResource: "malenam", withExtension: "txt"),
+              let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access file or documents directory")
+        }
+
+        let destinationURL = documentsDirectoryURL.appendingPathComponent("malenam.txt")
+
+        do {
+            try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
+        } catch {
+            print("Error copying file: \(error)")
+        }
+
+    }
+    
+    func copySurToDocuments () {
+        guard let sourceURL = Bundle.main.url(forResource: "malesur", withExtension: "txt"),
+              let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access file or documents directory")
+        }
+        
+        let destinationURL = documentsDirectoryURL.appendingPathComponent("malesur.txt")
+        
+        do {
+            try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
+        } catch {
+            print("Error copying file: \(error)")
+        }
+        
+    }
+    
+    
+    func readNamesFromFile() -> [String] {
+        let fileName = "malenam.txt"
+
+        guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access documents directory")
+        }
+
+        let fileURL = documentsDirectoryURL.appendingPathComponent(fileName)
+
+        do {
+            // Read the contents of the file
+            let fileContent = try String(contentsOf: fileURL)
+
+            // Split the file content into an array of strings
+            let names = fileContent.components(separatedBy: .newlines).filter { !$0.isEmpty }
+
+            print(names)
+            return names
+        } catch {
+            print("Error reading file: \(error)")
+            return []
+        }
+
+    }
+    
+    func readSurFromFile() -> [String] {
+        let fileName = "malesur.txt"
+        
+        guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access documents directory")
+        }
+        
+        let fileURL = documentsDirectoryURL.appendingPathComponent(fileName)
+        
+        do {
+            // Read the contents of the file
+            let fileContent = try String(contentsOf: fileURL)
+            
+            // Split the file content into an array of strings
+            let sur = fileContent.components(separatedBy: .newlines).filter { !$0.isEmpty }
+            
+            print(sur)
+            return sur
+        } catch {
+            print("Error reading file: \(error)")
+            return []
+        }
+        
+    }
+    
+    
+    
 }
 
 extension StringProtocol {

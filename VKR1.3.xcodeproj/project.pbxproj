@@ -512,8 +512,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "VKR1-3-Info.plist";
-				INFOPLIST_KEY_NSCameraUsageDescription = "VKR1.3 camera use";
-				INFOPLIST_KEY_NSContactsUsageDescription = "$(PRODUCT_NAME) contacts";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "VKR1.3 contacts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -545,8 +545,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "VKR1-3-Info.plist";
-				INFOPLIST_KEY_NSCameraUsageDescription = "VKR1.3 camera use";
-				INFOPLIST_KEY_NSContactsUsageDescription = "$(PRODUCT_NAME) contacts";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "VKR1.3 contacts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

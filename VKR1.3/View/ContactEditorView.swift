@@ -45,7 +45,6 @@ struct ContactEditorView: View {
             .navigationBarItems(
                 leading: Button(action: cancel) { Text("Отмена") },
                 trailing: Button("Сохранить") {
-                    // TODO: нужно ли здесь try?
                    try? controller.saveContact()
                     showsAlert = true
                 }

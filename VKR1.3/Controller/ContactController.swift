@@ -1,9 +1,3 @@
-//
-//  ContactController.swift
-//  VKR1.3
-//
-//  Created by Сергей Васильев on 29.04.2023.
-//
 
 import SwiftUI
 import ContactsUI

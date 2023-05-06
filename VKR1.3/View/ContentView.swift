@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  vkr1.1
-//
-//  Created by MacBook Air on 25.11.2022.
-//
-
 
 import SwiftUI
 import Contacts
@@ -85,9 +78,18 @@ struct ContentView: View {
                 texts.removeAll()
                 self.showScannerSheet = true
             }, label: {
-                Text("Сканировать")
-                Image(systemName: "doc.text.viewfinder")
-                    .font(.title)
+                    Group{
+                        HStack{
+                            Text("Сканировать")
+                            Image(systemName: "doc.text.viewfinder")
+                                .font(.title)
+                        }
+                    }
+                        .foregroundColor(.black)
+                        .frame(width: 180, height: 50)
+                        .multilineTextAlignment(.center)
+                        .background(RoundedRectangle(cornerRadius: 8).fill(Color.teal).shadow(radius: 3))
+                
             })
                 .sheet(isPresented: $showScannerSheet, content: {
                     self.makeScannerView()
